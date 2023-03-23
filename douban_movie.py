@@ -2,11 +2,14 @@
 # encoding=utf-8
 import requests
 import re
+
 import codecs
 from bs4 import BeautifulSoup
+
 from openpyxl import Workbook
 wb = Workbook()
 dest_filename = '电影.xlsx'
+
 ws1 = wb.active
 ws1.title = "电影top250"
 
@@ -25,6 +28,7 @@ def download_page(url):
 def get_li(doc):
     soup = BeautifulSoup(doc, 'html.parser')
     ol = soup.find('ol', class_='grid_view')
+    
     name = []  # 名字
     star_con = []  # 评价人数
     score = []  # 评分
